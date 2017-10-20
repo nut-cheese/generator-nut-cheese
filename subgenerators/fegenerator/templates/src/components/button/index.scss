@@ -1,0 +1,19 @@
+.demo-button {
+  font-size: 14px;
+  padding: 10px 12px;
+  border-radius: 3px;
+  border: 1px solid #f4f4f4;
+  color: #444;
+  background: #fff;
+  cursor: pointer;
+  outline: none;
+}
+.dash {
+  border: 1px dashed #ccc;
+  background: none;
+}
+.disabled {
+  user-select: none;
+  background: #ccc;
+  cursor: not-allowed;
+}
