@@ -15,23 +15,23 @@ Then generate your new project:
 ```bash
 yo my-own-generator
 ```
-
+
 ## 逻辑
- 包含 *main generator*, *fe generator*, *be generator*。
+ 包含 *main generator*, *fe generator*, *be generator*。
 
 #### main generator
 
-包含 *README*, *package.json*, 一些编辑器约定文件(.editorconfig), *.gitignore*, *lint文件*, *travis.yml/gitlab-ci.yml*, *babel*
+包含 *README*, *package.json*, 一些编辑器约定文件(.editorconfig), *.gitignore*, *lint文件*, *travis.yml/gitlab-ci.yml*, *babel*
 
 ### fe generator
 
-生成 `react`, `webpack`, `redux` 系列文件，同时包含test文件
+生成 `react`, `webpack`, `redux` 系列文件，同时包含test文件
 
 ### be generator
 
-生成 `express`后台，同时结合 `webpack-dev-middleware` 托管前端并提供接口。
+生成 `express`后台，同时结合 `webpack-dev-middleware` 托管前端并提供接口。
 
-#### prompting
+#### prompting
 
 ```shell
 What's your project name?
