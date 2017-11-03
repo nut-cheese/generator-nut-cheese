@@ -1,18 +1,12 @@
-import Home from './containers/home';
-import Prev from './containers/prev';
-import Next from './containers/next';
+import RootContainer from './components/RootContainer';
+import TodoApp from './containers/todo';
 
 const routerConfig = [{
   path: '/',
-  indexRoute: {
-    component: Home
-  },
+  component: RootContainer,
   childRoutes: [{
-    path: 'prev',
-    component: Prev
-  }, {
-    path: 'next',
-    component: Next,
+    path: 'todo',
+    component: TodoApp
   }]
 }];
 

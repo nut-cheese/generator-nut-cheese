@@ -1,11 +1,23 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { browserHistory, Router } from 'react-router';
+import { AppContainer } from 'react-hot-loader';
+import App from './root';
 
-import routerConfig from './router.config';
+const { NODE_ENV } = process.env;
 
-import './style/core.scss';
+const render = Component => {
+  ReactDOM.render(
+    <AppContainer>
+      <Component />
+    </AppContainer>
+    ,document.getElementById('app'),
+  );
+};
 
-const Container = <Router history={browserHistory} routes={routerConfig} />;
+render(App);
 
-ReactDOM.render(Container, document.getElementById('app'));
+// Webpack Hot Module Replacement API
+if (module.hot) {
+  const App = require('./root').default;
+  module.hot.accept('./root', () => { render(App); });
+}

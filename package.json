@@ -1,16 +1,24 @@
 {
   "name": "generator-nut-cheese",
   "version": "0.0.1",
-  "description": "generatea scaffold for build react project",
+  "description": "generate scaffold for build react project",
   "homepage": "",
   "author": {
     "name": "mrkou47",
     "email": "koubodehao@gmail.com",
     "url": "kbscript.me"
   },
-  "files": ["generators"],
+  "files": [
+    "generators"
+  ],
   "main": "generators/index.js",
-  "keywords": ["", "yeoman-generator"],
+  "keywords": [
+    "",
+    "yeoman-generator",
+    "react",
+    "scaffold",
+    "redux"
+  ],
   "devDependencies": {
     "yeoman-test": "^1.7.0",
     "yeoman-assert": "^3.1.0",
@@ -27,6 +35,7 @@
   },
   "dependencies": {
     "chalk": "^2.1.0",
+    "chalk-rainbow": "^1.0.0",
     "mkdirp": "^0.5.1",
     "yeoman-generator": "^2.0.1",
     "yosay": "^2.0.1"
@@ -41,10 +50,16 @@
     "test": "jest"
   },
   "lint-staged": {
-    "*.js": ["eslint --fix", "git add"]
+    "*.js": [
+      "eslint --fix",
+      "git add"
+    ]
   },
   "eslintConfig": {
-    "extends": ["xo", "prettier"],
+    "extends": [
+      "xo",
+      "prettier"
+    ],
     "env": {
       "jest": true,
       "node": true
@@ -58,7 +73,9 @@
         }
       ]
     },
-    "plugins": ["prettier"]
+    "plugins": [
+      "prettier"
+    ]
   },
   "repository": "nut-cheese/generator-nut-cheese",
   "license": "MIT"

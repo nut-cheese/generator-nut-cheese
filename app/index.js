@@ -4,6 +4,7 @@ const Generator = require('yeoman-generator');
 const path = require('path');
 const chalk = require('chalk');
 const mkdirp = require('mkdirp');
+const chalkRainbow = require('chalk-rainbow');
 
 class nutCheeseGenerator extends Generator {
   constructor(args, opts) {
@@ -22,24 +23,21 @@ class nutCheeseGenerator extends Generator {
     this.log(this.config)
   }
 
-  initializing() {
-  }
+  initializing() {}
 
   // 用户交互
   prompting() {
     this.log('prompting');
-    const questions = [
-      {
-        type: 'confirm',
-        name: 'reduxFlag',
-        message: 'Would you like to use redux?'
-      }
-    ];
+    const questions = [{
+      type: 'confirm',
+      name: 'reduxFlag',
+      message: 'Would you like to use redux?'
+    }];
     const appnameQuestion = {
-        type: 'input',
-        name: 'projectName',
-        message: "What's your project name?"
-      };
+      type: 'input',
+      name: 'projectName',
+      message: "What's your project name?"
+    };
     if (this.options.default) {
       this.answer.reduxFlag = false;
       this.answer.immutableFlag = false;
@@ -61,18 +59,15 @@ class nutCheeseGenerator extends Generator {
         this.answer.reduxFlag = answer.reduxFlag;
         this.log(answer);
         if (answer.reduxFlag) {
-          return this.prompt([
-            {
-              type: 'confirm',
-              name: 'immutableFlag',
-              message: 'Would you like to use immutable?'
-            }
-          ]).then(immutableFlag => this.answer.immutableFlag = immutableFlag);
+          return this.prompt([{
+            type: 'confirm',
+            name: 'immutableFlag',
+            message: 'Would you like to use immutable?'
+          }]).then(immutableFlag => this.answer.immutableFlag = immutableFlag);
         }
       })
       .then(() => {
-        return this.prompt([
-          {
+        return this.prompt([{
             type: 'list',
             name: 'domPluginFlag',
             message: 'Would you like to use jQuery or zepto?',
@@ -91,7 +86,7 @@ class nutCheeseGenerator extends Generator {
       });
   }
 
-  default() {
+  default () {
     const basePathName = path.basename(this.destinationPath());
     if (basePathName !== this.appname) {
       mkdirp(this.appname);
@@ -103,10 +98,7 @@ class nutCheeseGenerator extends Generator {
     }
   }
 
-  // 安装文件
-  install() {
-    this.log('main generator install npm package')
-  }
+
 
   // 处理文件
   writing() {
@@ -126,8 +118,7 @@ class nutCheeseGenerator extends Generator {
     );
     this.fs.copyTpl(
       this.templatePath('_README.md'),
-      this.destinationPath('README.md'),
-      { name: this.appname }
+      this.destinationPath('README.md'), { name: this.appname }
     );
     this.log(chalk.green.bold('done!'));
   }
@@ -136,13 +127,19 @@ class nutCheeseGenerator extends Generator {
     const answer = this.answer;
     this.fs.copyTpl(
       this.templatePath('_package.json'),
-      this.destinationPath('package.json'),
-      { name: this.appname, expressFlag: answer.expressFlag }
+      this.destinationPath('package.json'), { name: this.appname, expressFlag: answer.expressFlag }
     );
   }
 
-  installing() {
-    this.npmInstall();
+
+  // 安装文件
+  install() {
+    this.log('main generator install npm package')
+      // this.npmInstall();
+  }
+
+  end() {
+    this.log(chalkRainbow('All the work has been done, have fun!'));
   }
 }
 

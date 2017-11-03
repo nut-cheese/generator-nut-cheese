@@ -1,6 +1,5 @@
 const path = require('path');
 const webpack = require('webpack');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
@@ -15,61 +14,75 @@ module.exports = {
   },
   output: {
     filename: 'bundle.[hash].js',
-    path: path.join(__dirname, "../dist"),
+    path: path.join(__dirname, '../dist'),
     publicPath: '/',
   },
   resolve: {
     modules: [
-      "node_modules",
+      'node_modules',
       path.resolve(__dirname, '../src'),
     ],
+    alias: {
+      Components: path.resolve(__dirname, '../src/components'),
+      Util: path.resolve(__dirname, '../src/util/util'),
+    },
     extensions: ['.js', '.jsx'],
   },
   module: {
     rules: [{
       test: /\.jsx?$/,
-      loader: 'babel-loader',
+      use: [{
+        loader: 'babel-loader',
+        options: {
+          presets: ['react', ['es2015', { modules: false }], 'stage-0'],
+          plugins: [
+            'transform-runtime',
+            'react-hot-loader/babel'
+          ],
+          babelrc: false,
+        }
+      }],
       exclude: /(node_modules|bower_components)/,
-    }, {
+    },
+    {
       test: /\.scss$/,
-      use: ExtractTextPlugin.extract({
-        fallback: "style-loader",
-        use: [{
-            loader: 'css-loader',
-            options: {
-              importLoaders: 2,
-              modules: true,
-              localIdentName: '[name]-[local]-[hash:base64:5]',
-            }
-          },
-          'postcss-loader',
-          'sass-loader',
-        ]
-      })
+      use: [
+        'style-loader',
+        {
+          loader: 'css-loader',
+          options: {
+            importLoaders: 2,
+            modules: true,
+            sourceMap: true,
+            localIdentName: '[name]-[local]-[hash:base64:5]',
+          }
+        },
+        'postcss-loader',
+        'sass-loader',
+      ],
     }, {
       test: /\.css$/,
-      use: ExtractTextPlugin.extract({
-        fallback: "style-loader",
-        use: [
-          'css-loader',
-          'postcss-loader'
-        ]
-      })
+      use: [
+        'style-loader?sourceMap',
+        'css-loader',
+        'postcss-loader'
+      ]
     }, {
       test: /\.(png|jpg|gif|svg|eot|ttf|woff|woff2)$/,
       loader: 'url-loader',
       options: {
         limit: 10000
       }
-    }]
+    }
+    ]
   },
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
+    new webpack.NamedModulesPlugin(),
     new webpack.optimize.CommonsChunkPlugin({
       name: 'vender',
       filename: '[name].bundle.js'
     }),
-    new ExtractTextPlugin("styles.css"),
     new HtmlWebpackPlugin({
       template: path.join(__dirname, '../template/index.html'),
       hash: true,
@@ -79,6 +92,7 @@ module.exports = {
     hot: true,
     port: 7801,
     historyApiFallback: true,
+    contentBase: path.join(__dirname, '../dist'),
   },
-  devtool: 'source-map',
+  devtool: 'cheap-module-eval-source-map',
 };

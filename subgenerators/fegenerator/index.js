@@ -1,4 +1,5 @@
 const path = require('path');
+const fs = require('fs');
 const chalk = require('chalk');
 
 const Generator = require('yeoman-generator');
@@ -18,27 +19,16 @@ class FeGenerator extends Generator {
 
   writing() {
     this.log(chalk.yellow.bold('fe generator is generating react files...'));
-    this.fs.copy(
-      this.templatePath('src'),
-      this.destinationPath('src')
-    );
-    this.fs.copy(
-      this.templatePath('webpack'),
-      this.destinationPath('webpack')
-    );
-    this.fs.copy(
-      this.templatePath('template'),
-      this.destinationPath('template')
-    );
-    this.fs.copy(
-      this.templatePath('.babelrc'),
-      this.destinationPath('.babelrc')
-    );
-    this.fs.copy(
-      this.templatePath('postcss.config.js'),
-      this.destinationPath('postcss.config.js')
-    );
-    this.log(chalk.green.bold('done!'));
+    fs.readdir(path.join(__dirname, 'templates'), {}, (err, files) => {
+      if (files[0] == '.DS_Store') files.splice(0, 1);
+      files.forEach((file) => {
+        this.fs.copy(
+          this.templatePath(file),
+          this.destinationPath(file)
+        );
+      });
+    });
+    this.log(chalk.green.bold('generate frontEnd files done!'));
   }
 
   installing() {
