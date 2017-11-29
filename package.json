@@ -2,11 +2,11 @@
   "name": "generator-nut-cheese",
   "version": "0.0.1",
   "description": "generate scaffold for build react project",
-  "homepage": "",
+  "homepage": "https://github.com/nut-cheese/generator-nut-cheese",
   "author": {
     "name": "mrkou47",
     "email": "koubodehao@gmail.com",
-    "url": "kbscript.me"
+    "url": "http://mrkou47.github.io"
   },
   "files": [
     "generators"
