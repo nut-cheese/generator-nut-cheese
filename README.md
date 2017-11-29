@@ -1,10 +1,10 @@
-# generator-my-own-generator [![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Dependency Status][daviddm-image]][daviddm-url]
+# generator-nut-cheese [![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Dependency Status][daviddm-image]][daviddm-url]
 > generate scaffold for build react project
 
 
 ## Installation
 
-First, install [Yeoman](http://yeoman.io) and generator-my-own-generator using [npm](https://www.npmjs.com/) (we assume you have pre-installed [node.js](https://nodejs.org/)).
+First, install [Yeoman](http://yeoman.io) and generator-nut-cheese using [npm](https://www.npmjs.com/) (we assume you have pre-installed [node.js](https://nodejs.org/)).
 
 ```bash
 npm install -g yo
@@ -54,9 +54,9 @@ Whether you need to use express at the same time(y/N)?
 MIT © [mrkou47](kbscript.me)
 
 
-[npm-image]: https://badge.fury.io/js/generator-my-own-generator.svg
-[npm-url]: https://npmjs.org/package/generator-my-own-generator
-[travis-image]: https://travis-ci.org/nut-cheese/generator-my-own-generator.svg?branch=master
-[travis-url]: https://travis-ci.org/nut-cheese/generator-my-own-generator
-[daviddm-image]: https://david-dm.org/nut-cheese/generator-my-own-generator.svg?theme=shields.io
-[daviddm-url]: https://david-dm.org/nut-cheese/generator-my-own-generator
+[npm-image]: https://badge.fury.io/js/generator-nut-cheese.svg
+[npm-url]: https://npmjs.org/package/generator-nut-cheese
+[travis-image]: https://travis-ci.org/nut-cheese/generator-nut-cheese.svg?branch=master
+[travis-url]: https://travis-ci.org/nut-cheese/generator-nut-cheese
+[daviddm-image]: https://david-dm.org/nut-cheese/generator-nut-cheese.svg?theme=shields.io
+[daviddm-url]: https://david-dm.org/nut-cheese/generator-nut-cheese
