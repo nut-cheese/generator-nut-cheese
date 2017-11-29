@@ -8,13 +8,13 @@ First, install [Yeoman](http://yeoman.io) and generator-my-own-generator using [
 
 ```bash
 npm install -g yo
-npm install -g generator-my-own-generator
+npm install -g generator-nut-cheese
 ```
 
 Then generate your new project:
 
 ```bash
-yo my-own-generator
+yo generator-nut-cheese
 ```
 
 ## 逻辑
